@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
-driver = webdriver.Chrome("E:/Informatica/Executori_Details/chromedriver.exe")
+driver = webdriver.Chrome("PATH to your webdriver")
 
 
 def _accept_cookies():
@@ -53,7 +53,6 @@ def _get_table_data():
             value = str(driver.find_element(By.XPATH,
                                             "//*[@id='tablou']/div/div[1]/div[2]/div[1]/table/tbody/tr[" + str(
                                                 r) + "]/td[" + str(p) + "]").text)
-            # if len(value) > 0 and value is not "-":
             temp_list.append(value)
         bailiffs.append(temp_list)
     return bailiffs
@@ -66,10 +65,7 @@ def _get_data():
         next_page_button.click()
         current_page_data = _get_table_data()
         final_list.append(current_page_data)
-
-    # for el in final_list:
-    #     for bailiff in el:
-    #         print(bailiff)
+        
     return final_list
 
 
